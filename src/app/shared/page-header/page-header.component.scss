@@ -1,0 +1,14 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    color: #502c84;
+    text-transform: capitalize;
+    margin: 1em 0;
+  }
+  button {
+    background-color: #502c84;
+    color: #fff;
+  }
+}

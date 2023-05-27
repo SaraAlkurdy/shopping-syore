@@ -1,0 +1,144 @@
+<h1 mat-dialog-title>
+  {{ title }}
+</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="productsForm" (ngSubmit)="submit()">
+    <!-- title -->
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="title"
+        formControlName="title"
+        [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+      />
+      <mat-error
+        *ngIf="submitted && f['title'].errors"
+        class="invalid-feedback"
+      >
+        <p *ngIf="submitted && f['title'].errors['required']">
+          title is required
+        </p>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- price -->
+    <mat-form-field appearance="fill">
+      <mat-label>price</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="price"
+        formControlName="price"
+        [ngClass]="{ 'is-invalid': submitted && f['price'].errors }"
+      />
+      <mat-error
+        *ngIf="submitted && f['price'].errors"
+        class="invalid-feedback"
+      >
+        <p *ngIf="submitted && f['price'].errors['required']">
+          price is required
+        </p>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- rating -->
+    <mat-form-field appearance="fill">
+      <mat-label>rating</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="0.0"
+        formControlName="rating"
+        [ngClass]="{ 'is-invalid': submitted && f['rating'].errors }"
+      />
+      <mat-error
+        *ngIf="submitted && f['rating'].errors"
+        class="invalid-feedback"
+      >
+        <p *ngIf="submitted && f['rating'].errors['required']">
+          rating is required
+        </p>
+        <p *ngIf="submitted && f['rating'].errors['pattern']">
+          enter valid number
+        </p>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- category -->
+    <div *ngIf="categories$ | async as categories">
+      <mat-label>category</mat-label>
+
+      <mat-form-field appearance="fill">
+        <mat-select formControlName="category" placeholder="category">
+          <mat-option *ngFor="let item of categories$ | async" [value]="item">{{
+            item
+          }}</mat-option>
+        </mat-select>
+
+        <mat-error
+          *ngIf="submitted && f['category'].errors"
+          class="invalid-feedback"
+        >
+          <p *ngIf="submitted && f['category'].errors['required']">
+            category is required
+          </p>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- description -->
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea
+        type="text"
+        matInput
+        placeholder="description"
+        formControlName="description"
+        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+      ></textarea>
+      <mat-error
+        *ngIf="submitted && f['description'].errors"
+        class="invalid-feedback"
+      >
+        <p *ngIf="submitted && f['description'].errors['required']">
+          description is required
+        </p>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- image -->
+    <div class="image">
+      <span class="upload-image">
+        <label for="files" class="btn">Upload Image</label>
+        <input
+          id="files"
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+      </span>
+
+      <span class="file-upload" *ngIf="imageUrl">
+        <div class="displayd-image">
+          <img [src]="imageUrl" />
+        </div>
+      </span>
+    </div>
+    <mat-error *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+      <p *ngIf="submitted && f['image'].errors['required']">
+        image is required
+      </p>
+    </mat-error>
+
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-stroked-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button type="submit">Save</button>
+    </div>
+  </form>
+</div>
+
+<app-spinner [spinner]="spinner"></app-spinner>

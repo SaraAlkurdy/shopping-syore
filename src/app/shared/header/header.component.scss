@@ -1,0 +1,15 @@
+.mat-toolbar {
+  color: #502c84;
+  .mat-toolbar-row {
+    box-shadow: 0 8px 8px -4px rgba(80, 44, 132, 0.2);
+    z-index: 2;
+    img {
+      width: 5em;
+    }
+    a {
+      &:hover {
+        color: #502c84;
+      }
+    }
+  }
+}

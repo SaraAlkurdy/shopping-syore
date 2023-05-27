@@ -1,0 +1,46 @@
+div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+mat-card {
+  padding: 3em;
+  box-shadow: 0.5rem 0.5rem #502c84, -0.5rem -0.5rem #ccc !important;
+  mat-card-title {
+    font-weight: 600;
+    min-width: 350px;
+    color: #502c84;
+  }
+
+  mat-card-content {
+    form {
+      .mat-form-field {
+        width: 100%;
+        min-width: 300px;
+      }
+
+      .show-password {
+        &::after {
+          content: "";
+          position: absolute;
+          width: 1.5px;
+          height: 115.421356%;
+          top: -10.710678%;
+          display: block;
+          background: rgba(0, 0, 0, 0.9);
+          left: 50%;
+          transform: translate(-50%, 0) rotate(45deg);
+        }
+      }
+    }
+
+    button {
+      background: #502c84;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}

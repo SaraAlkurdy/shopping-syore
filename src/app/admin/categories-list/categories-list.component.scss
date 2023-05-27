@@ -1,0 +1,55 @@
+.mat-card-header {
+  .mat-card-title {
+    text-transform: capitalize;
+  }
+}
+
+.mat-elevation-z8 {
+  padding-bottom: 1em;
+  box-shadow: none;
+
+  .mat-table {
+    width: 100%;
+    .mat-column- {
+      &title {
+        flex: 1 1 70%;
+      }
+      &category {
+        flex: 1 1 10%;
+      }
+      &price {
+        flex: 1 1 10%;
+      }
+      &rating {
+        flex: 1 1 10%;
+      }
+      &actions {
+        flex: 1 1 10%;
+      }
+    }
+    mat-header-row {
+      th.mat-header-cell {
+        text-transform: uppercase;
+        font-size: 15px;
+        color: #502c84;
+        border: none;
+      }
+    }
+    mat-row {
+      td {
+        border: none;
+        color: #838383;
+        display: inherit;
+        padding: 1em;
+        img {
+          width: 3em;
+          margin-right: 2em;
+        }
+
+        .mat-icon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

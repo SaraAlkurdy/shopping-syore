@@ -1,0 +1,34 @@
+form {
+  .mat-form-field {
+    width: 100%;
+  }
+  .image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+    .upload-image {
+      label {
+        background: #502c84;
+        color: #fff;
+      }
+      input {
+        display: none;
+      }
+    }
+
+    .displayd-image {
+      height: 11.5rem;
+      img {
+        width: 100%;
+        object-fit: contain;
+        height: inherit;
+      }
+    }
+  }
+}
+
+.mat-raised-button {
+  background: #502c84;
+  color: #fff;
+}

@@ -1,0 +1,61 @@
+<ng-container *ngIf="categories$ | async as categories"></ng-container>
+
+<app-page-header [title]="'categories list'"></app-page-header>
+
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-between stretch"
+  fxLayoutGap="15px grid"
+  fxLayoutGap.sm="15px grid"
+>
+  <div
+    fxFlex="50"
+    fxFlex.md="50"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    *ngFor="let item of productCategories; let i = index"
+  >
+    <mat-card class="example-card" fxFlex>
+      <mat-card-header>
+        <mat-card-title>{{ item?.category }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="mat-elevation-z8">
+          <mat-table [dataSource]="item?.products">
+            <!-- title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef>title</th>
+              <td mat-cell *matCellDef="let element">
+                <img [src]="element?.image" />
+                {{ element?.title }}
+              </td>
+            </ng-container>
+
+            <!-- price Column -->
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef>price</th>
+              <td mat-cell *matCellDef="let element">{{ element?.price }}</td>
+            </ng-container>
+
+            <!-- rating Column -->
+            <ng-container matColumnDef="rating">
+              <th mat-header-cell *matHeaderCellDef>rating</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.rating.rate }}
+              </td>
+            </ng-container>
+
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+
+          <!-- <mat-paginator showFirstLastButtons></mat-paginator> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<app-spinner [spinner]="spinner"></app-spinner>
